@@ -21,10 +21,6 @@ class MongodbHelper:
         result = self.__get_collection().find(predicate)
         return result
 
-    def get_all(self, predicate: object = {}, fields: object = {}) -> object:
-        result = self.__get_collection().find(predicate, fields)
-        return result
-
     def add(self, data):
         result = self.__get_collection().insert_one(data)
         return result.inserted_id

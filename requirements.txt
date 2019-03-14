@@ -1,7 +1,5 @@
 flask>=1.0
 pymongo>=3.4
-
-flask-restful
-flask_httpauth
-
-bson
+flask_restful
+Flask-HTTPAuth
+marshmallow

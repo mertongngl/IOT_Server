@@ -6,6 +6,6 @@ WORKDIR /api
 
 RUN pip install -r requirements.txt
 
-RUN export FLASK_APP=app.py
+RUN export FLASK_APP=api.py
 
-ENTRYPOINT [ "python", "-m", "flask", "run", "--host=0.0.0.0" ]
+ENTRYPOINT [ "python", "api.py" ]
