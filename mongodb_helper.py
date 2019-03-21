@@ -13,10 +13,6 @@ class MongodbHelper:
     def __get_collection(self):
         return self.db[self.collection_name]
 
-    def fetch_by(self, predicate):
-        result = self.__get_collection().find_one(predicate)
-        return result
-
     def list(self, predicate):
         result = self.__get_collection().find(predicate)
         return result
