@@ -41,6 +41,15 @@ class Sensors(Resource):
         result = mongoHelper.add(json_data)
         return api_response(201, {"object_id":result})
 
+    @auth.login_required
+    def delete(self):
+        mongoHelper = MongodbHelper(self.collection_name, self.db_dsn, self.db_name)
+        deleted_count = mongoHelper.remove_all()    
+        if deleted_count == 0:
+            return api_response(400, "Cannot delete all sensors")
+
+        return api_response(200, "Delete all payloads succesfully")
+
 class SensorById(Resource):
     def __init__(self):
         self.collection_name = "sensors"
@@ -101,7 +110,15 @@ class Payloads(Resource):
         mongoHelper = MongodbHelper(self.collection_name, self.db_dsn, self.db_name)
         response = list(mongoHelper.list({}))
         return api_response(200, response)
-            
+
+    @auth.login_required
+    def delete(self):
+        mongoHelper = MongodbHelper(self.collection_name, self.db_dsn, self.db_name)
+        deleted_count = mongoHelper.remove_all()    
+        if deleted_count == 0:
+            return api_response(400, "Cannot delete all payloads")
+
+        return api_response(200, "Delete all payloads succesfully")
 
 
 class HelloWorld(Resource):

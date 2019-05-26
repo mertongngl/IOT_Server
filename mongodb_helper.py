@@ -28,3 +28,7 @@ class MongodbHelper:
     def remove(self, predicate):
         result = self.__get_collection().delete_one(predicate)
         return result.deleted_count
+
+    def remove_all(self):
+        result = self.__get_collection().delete_many({})
+        return result.deleted_count

@@ -1,6 +1,6 @@
 version: '3'
 services:
-  web:
+  api:
     container_name: api
     build:
       context: .
@@ -16,3 +16,10 @@ services:
     image: mongo:4.1
     volumes:
       - ./db_data:/data/db
+  ui:
+    container_name: webui
+    image: thesisui:0.1
+    ports:
+      - "80:80"
+    links:
+      - api
